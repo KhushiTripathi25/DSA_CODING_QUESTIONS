@@ -1,0 +1,42 @@
+Problem Statement: Jack and Jill are playing a string game. Jack has given Jill two strings A and B. Jill has to derive a string C from A, by deleting elements from string A, such that string C does not contain any element of string B. Jill needs help to do this task. She wants a program to do this as she is lazy. Given strings A and B as input, give string C as Output.
+Example:
+  Input:
+    tiger ->Input string A
+    ti ->Input string B
+  output:
+    ger ->output string C
+  Explanation: After removing “t” and “I” from “tiger”. We are left with “ger”. So the answer is “ger”.
+  Input format : The first line consists of the string, representing the string A. The second line consists of the string, representing the string B.
+  Output format : The output displays a string C, which is the result of the string B taken out from A as per the logic. Refer to the sample output for the formatting specifications.
+Code constraints :
+  0 < length of A < 100
+  0 < length of B < length of A
+  A and B contains only lowercase letters
+Sample test cases :
+Input 1 :
+  tiger
+  ti
+Output 1 :
+  ger
+
+CPP CODE: 
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    string A, B;
+    cin >> A >> B;
+
+    // Store characters of B in a set for fast lookup
+    unordered_set<char> removeChars(B.begin(), B.end());
+
+    string C = "";
+    for (char ch : A) {
+        if (removeChars.find(ch) == removeChars.end()) {
+            C += ch;
+        }
+    }
+
+    cout << C << endl;
+    return 0;
+}
